@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://C:\Users\ander\Desktop\CS246\Repositories\calendarteam4\calendarteam4\android.iml" filepath="C:\Users\ander\Desktop\CS246\Repositories\calendarteam4\calendarteam4\android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\ander\Desktop\CS246\Repositories\calendarteam4\calendarteam4\app\app.iml" filepath="C:\Users\ander\Desktop\CS246\Repositories\calendarteam4\calendarteam4\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calendarteam4.iml" filepath="$PROJECT_DIR$/calendarteam4.iml" />
     </modules>
   </component>
 </project>
