@@ -9,11 +9,11 @@ import android.os.Bundle;
  * Created by britthunterlefevre on 3/7/18.
  */
 
-public class User {
+public class userData {
     private String username;
     private String password;
 
-    final static private String SHARED_PREF_FILE = "com.example.mycalendar.User.SHARED_PREF_FILE";
+    final static private String SHARED_PREF_FILE = "com.example.mycalendar.userData.SHARED_PREF_FILE";
 
 
     public String getUsername(){

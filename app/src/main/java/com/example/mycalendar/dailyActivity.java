@@ -11,7 +11,9 @@ import android.os.Bundle;
 
 public class dailyActivity extends Activity {
 
-    final static private String SHARED_PREF_FILE = "com.example.mycalendar.User.SHARED_PREF_FILE";
+    private userData user;
+
+    final static private String SHARED_PREF_FILE = "com.example.mycalendar.userData.SHARED_PREF_FILE";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class dailyActivity extends Activity {
         SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         if (sharedPref.contains(SHARED_PREF_FILE)){
             String username = sharedPref.getString(SHARED_PREF_FILE, "Username here");
-            
+            user.setUsername(username);
         }
     }
 }
