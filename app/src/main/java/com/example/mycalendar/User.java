@@ -32,19 +32,11 @@ public class User {
         this.password = password;
     }
 
-    public void saveSharedPref(){
-        SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
-        editor.commit();
-    }
+
 
     public void loadSharedPref(){
 
     }
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+
 }
