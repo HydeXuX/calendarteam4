@@ -1,5 +1,10 @@
 package com.example.mycalendar;
 
+import android.content.SharedPreferences;
+import android.content.Context;
+import android.os.Bundle;
+
+
 /**
  * Created by britthunterlefevre on 3/7/18.
  */
@@ -7,6 +12,9 @@ package com.example.mycalendar;
 public class User {
     private String username;
     private String password;
+
+    final static private String SHARED_PREF_FILE = "com.example.mycalendar.User.SHARED_PREF_FILE";
+
 
     public String getUsername(){
         return username;
@@ -24,9 +32,19 @@ public class User {
         this.password = password;
     }
 
-    public String saveUsername(){
-
-        
+    public void saveSharedPref(){
+        SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
+        editor.commit();
     }
 
+    public void loadSharedPref(){
+
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
 }
