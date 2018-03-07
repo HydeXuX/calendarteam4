@@ -34,9 +34,4 @@ public class User {
 
 
 
-    public void loadSharedPref(){
-
-    }
-
-
 }
