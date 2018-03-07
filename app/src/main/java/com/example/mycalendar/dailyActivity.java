@@ -28,7 +28,8 @@ public class dailyActivity extends Activity {
     public void loadSharedPref(){
         SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         if (sharedPref.contains(SHARED_PREF_FILE)){
-            String username = sharedPref.getString;
+            String username = sharedPref.getString(SHARED_PREF_FILE, "Username here");
+            
         }
     }
 }
