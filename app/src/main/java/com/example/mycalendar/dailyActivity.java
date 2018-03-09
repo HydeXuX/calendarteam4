@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Date;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by britthunterlefevre on 3/7/18.
@@ -18,12 +23,16 @@ public class dailyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        TextView textView = (TextView)findViewById(R.id.dateText);
+        textView.setText(currentDateTimeString);
     }
 
     public void saveSharedPref(){
         SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
+        //editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
         editor.commit();
     }
 

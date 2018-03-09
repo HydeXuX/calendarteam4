@@ -1,5 +1,12 @@
 package com.example.mycalendar;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import com.google.firebase.database.Exclude;
+import android.provider.ContactsContract.Contacts.Data;
+import android.widget.TextView;
+
 /**
  * Created by britthunterlefevre on 3/7/18.
  */
@@ -7,6 +14,9 @@ package com.example.mycalendar;
 public class calendarPresenter {
     private userData ud;
 
+    public calendarPresenter() {
+
+    }
     public String getUsername() {
         return ud.getUsername();
     }

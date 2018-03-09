@@ -8,6 +8,7 @@ import java.util.List;
  */
 
 public class calendarData {
+    private long TS;
     private calendarPresenter cp;
     private List<String> list;
     // daily goals
@@ -18,7 +19,32 @@ public class calendarData {
     }
 
     public void setCalendarData(){
-        this.list =
+
     }
+
+    public void displayCalendar(){
+
+    }
+
+    public void addEvent(){
+
+    }
+
+    public void deleteEvent() {
+
+    }
+
+    public void changeGoals(){
+
+    }
+
+    public void changeDay(){
+
+    }
+
+    public void changeNotes(){
+
+    }
+
 
 }
