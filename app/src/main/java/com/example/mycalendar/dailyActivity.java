@@ -32,7 +32,7 @@ public class dailyActivity extends Activity {
     public void saveSharedPref(){
         SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        //editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
+        editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
         editor.commit();
     }
 
@@ -42,5 +42,13 @@ public class dailyActivity extends Activity {
             String username = sharedPref.getString(SHARED_PREF_FILE, "Username here");
             user.setUsername(username);
         }
+    }
+
+    public void register(MainActivity mainActivity) {
+        //REGISTER HERE
+    }
+
+    public void unRegister(MainActivity mainActivity) {
+        //UNREGISTER HERE
     }
 }
