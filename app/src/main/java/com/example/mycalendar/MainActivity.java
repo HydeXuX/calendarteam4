@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 public class MainActivity extends AppCompatActivity {
 
     private calendarData data;
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*** this assumes we have an id textView and gridLayout in our xml ***/
-        currentDate = (TextView) findViewById(R.id.textView);
+        currentDate = (TextView) findViewById(R.id.dailyGoals);
         dailyLayout = (GridLayout) findViewById(R.id.gridLayout);
 
         /****** Must change below to match our project *******/

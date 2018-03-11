@@ -32,19 +32,19 @@
                 android:id="@+id/button34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="CHANGE" />
 
             <Button
                 android:id="@+id/button54"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="To" />
 
             <Button
                 android:id="@+id/button53"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="LOGIN" />
 
             <Button
                 android:id="@+id/button52"
