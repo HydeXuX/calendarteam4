@@ -9,16 +9,18 @@ import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private calendarData data;
-    private dailyActivity dailyPresenter;
+    private dailyPresenter dailyPresenter;
     private TextView currentDate;
     private GridLayout dailyLayout;
     private ArrayAdapter adapter;
 
     final static private String SHARED_PREF_FILE = "ander.Desktop.CS246.Repositories.calendarteam4.calendarteam4.SHARED_PREF_FILE";
-    final static private String IS_SAVED = "ander.Desktop.CS246.Repositories/calendarteam4.calendarteam4.IS_SAVED";
+    final static private String IS_SAVED =         "ander.Desktop.CS246.Repositories/calendarteam4.calendarteam4.IS_SAVED";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         /*** this assumes we have an id textView and gridLayout in our xml ***/
         currentDate = (TextView) findViewById(R.id.dailyGoals);
-        dailyLayout = (GridLayout) findViewById(R.id.gridLayout);
+        dailyLayout = (GridLayout) findViewById(R.id.grid);
 
         /****** Must change below to match our project *******/
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1)
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
         dailyLayout.setAdapter(adapter);
 
-        dailyPresenter = new dailyActivity();
+        dailyPresenter = new dailyPresenter();
         dailyPresenter.register(this);
 
         dailyPresenter.loadSharedPref();
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        dailyPresenter.unregister();
+        dailyPresenter.unRegister(this);
         saveSharedPref();
     }
 
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.contains(IS_SAVED)) {
             /********
              * Here we need to set all of the current textViews and other boxes
-             * to the data that we had saved. For example:
+             * to the firebaseStorage that we had saved. For example:
              * presenter.setXYZ(XYZ);
              */
 
@@ -70,22 +72,24 @@ public class MainActivity extends AppCompatActivity {
     private void saveSharedPref() {
         SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        /** I want to have the editor save each string of data in our data.list **/
-        editor.putString(IS_SAVED, data.getList()); /** have this as a for-loop to do that**/
+        List<String>takenData = data.getCalendarData();
+        /** I want to have the editor save each string of firebaseStorage in our firebaseStorage.list **/
+        editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
         editor.commit();
     }
 
     public void refreshData(View view) {
-        /** add a request data class to dailyPresenter **/
-        dailyPresenter.requestData();
+        /** add a request firebaseStorage class to dailyPresenter..........? **/
+        // on second thoughts maybe we just need to send the list in here and not refer to dailyPresenter except to save the new list if we changed it or not
+        List<String>takenData = data.getCalendarData();
         /** we will call on this function whenever an event is created/deleted **/
     }
 
     public void setData(String data) {
-        /** loops through like saveSharedPref, will set data to the view **/
+        /** loops through like saveSharedPref, will set firebaseStorage to the view **/
         for (int i = 0; i < numberOfEvents; i++) {
             dailyLayout.someHowAccessEachBoxAppropriately(data);
-            /** Bro MacBeth Does tv_weatherData.setText(data);, where tv_weatherData is TextView type **/
+            /** Bro MacBeth Does tv_weatherData.setText(firebaseStorage);, where tv_weatherData is TextView type **/
         }
     }
 }

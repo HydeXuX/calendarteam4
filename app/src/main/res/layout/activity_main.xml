@@ -41,7 +41,7 @@
                 android:text="To" />
 
             <Button
-                android:id="@+id/button53"
+                android:id="@+id/userLogIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="LOGIN" />
@@ -175,6 +175,7 @@
         android:layout_height="41dp"
         android:layout_marginBottom="7dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:text="Settings"
         app:layout_constraintBottom_toTopOf="@+id/scrollView1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +192,7 @@
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/button"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 

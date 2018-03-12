@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener;
  * Created by ander on 2/28/2018.
  */
 
-public class data {
+public class firebaseStorage {
 
     // How to get an instance of our database using
     // get instance() and reference location to write to.

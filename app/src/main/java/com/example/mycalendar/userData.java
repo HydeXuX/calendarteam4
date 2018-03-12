@@ -10,11 +10,11 @@ import android.os.Bundle;
  */
 
 public class userData {
+    private calendarPresenter CalendarPresenter;
     private String username;
     private String password;
 
     final static private String SHARED_PREF_FILE = "com.example.mycalendar.userData.SHARED_PREF_FILE";
-
 
     public String getUsername(){
         return username;

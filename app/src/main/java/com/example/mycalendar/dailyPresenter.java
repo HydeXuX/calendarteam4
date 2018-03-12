@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
  * Created by britthunterlefevre on 3/7/18.
  */
 
-public class dailyActivity extends Activity {
+public class dailyPresenter extends Activity {
 
     private userData user;
 

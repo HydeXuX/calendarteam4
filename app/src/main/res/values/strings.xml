@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyCalendar</string>
+    <string name="button">Button</string>
+    <string name="Save">save</string>
 </resources>
