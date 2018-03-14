@@ -501,6 +501,7 @@
             android:layout_weight="1"
             android:text="Weekly Events: X"
             android:textAlignment="textStart"
-            android:textSize="12dp" />
+            android:layout_gravity="start"
+            android:textSize="12sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

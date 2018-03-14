@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Date;
@@ -42,6 +43,11 @@ public class dailyPresenter extends Activity {
             String username = sharedPref.getString(SHARED_PREF_FILE, "Username here");
             user.setUsername(username);
         }
+    }
+
+    // called when user taps the "weekly" button
+    fun changeToWeekly(view: View) {
+        //Do something in response to button
     }
 
     public void register(MainActivity mainActivity) {
