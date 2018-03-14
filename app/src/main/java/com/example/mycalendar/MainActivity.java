@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String log = "MainActivity";
     private calendarData data;
     private dailyPresenter dailyPresenter;
     private TextView currentDate;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         dailyPresenter.register(this);
+        Log.i(MainActivity.log, "Changed state to: onResume");
     }
 
     @Override
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         dailyPresenter.unRegister(this);
         saveSharedPref();
+        Log.i(MainActivity.log, "Changed state to: onPause");
     }
 
     private void loadSharedPref() {
@@ -65,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
              * to the firebaseStorage that we had saved. For example:
              * presenter.setXYZ(XYZ);
              */
-
+            Log.i(MainActivity.log, "Load Preferences is Successful");
+        }
+        else{
+            Log.e(MainActivity.log, "Could not load preferences");
         }
     }
 
@@ -76,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         /** I want to have the editor save each string of firebaseStorage in our firebaseStorage.list **/
         editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
         editor.commit();
+        if(takenData.equals(null)){
+            Log.w(MainActivity.log, "TakenData is null");
+        }
     }
 
     public void refreshData(View view) {
@@ -83,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         // on second thoughts maybe we just need to send the list in here and not refer to dailyPresenter except to save the new list if we changed it or not
         List<String>takenData = data.getCalendarData();
         /** we will call on this function whenever an event is created/deleted **/
+        Log.i(MainActivity.log, "Refresh data");
     }
 
     public void setData(String data) {
