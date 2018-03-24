@@ -237,7 +237,7 @@
                 <!-- CONTAINS CODE FOR THE TIMES SLOTS OF EACH DAY -->
                 <LinearLayout
                     android:id="@+id/mondayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -247,6 +247,7 @@
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
+                        android:background="@drawable/text_view_border"
                         android:text="" />
 
                     <TextView
@@ -436,7 +437,7 @@
 
                 <LinearLayout
                     android:id="@+id/tuesdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -635,7 +636,7 @@
 
                 <LinearLayout
                     android:id="@+id/wednesdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -834,7 +835,7 @@
 
                 <LinearLayout
                     android:id="@+id/thursdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1033,7 +1034,7 @@
 
                 <LinearLayout
                     android:id="@+id/fridayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1232,7 +1233,7 @@
 
                 <LinearLayout
                     android:id="@+id/saturdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1431,7 +1432,7 @@
 
                 <LinearLayout
                     android:id="@+id/sundayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
