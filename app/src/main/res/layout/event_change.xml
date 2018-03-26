@@ -32,11 +32,10 @@
             android:id="@+id/eventDate"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@drawable/text_view_border"
             android:ems="10"
             android:hint="Date"
-            android:background="@drawable/text_view_border"
-            android:inputType="date"
-            android:text="Remember to add end time somewhere" />
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/eventStartTime"
@@ -44,7 +43,7 @@
             android:layout_height="50dp"
             android:background="@drawable/text_view_border"
             android:ems="10"
-            android:hint="Time"
+            android:hint="Start Time"
             android:inputType="time" />
 
         <EditText
@@ -52,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:hint="End Time"
             android:inputType="time" />
 
         <EditText

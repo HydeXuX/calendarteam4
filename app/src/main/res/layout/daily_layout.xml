@@ -69,7 +69,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintBottom_toTopOf="@+id/goalsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeView">
@@ -79,7 +79,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/weeklyEventTracker"
+                android:id="@+id/eventTracker"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -236,13 +236,13 @@
 
                 <!-- CONTAINS CODE FOR THE TIMES SLOTS OF EACH DAY -->
                 <LinearLayout
-                    android:id="@+id/mondayEvents"
+                    android:id="@+id/dailyEvents"
                     android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/monday1am"
+                        android:id="@+id/daily1am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -251,7 +251,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday2am"
+                        android:id="@+id/daily2am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -259,7 +259,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday3am"
+                        android:id="@+id/daily3am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -267,7 +267,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday4am"
+                        android:id="@+id/daily4am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -275,7 +275,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday5am"
+                        android:id="@+id/daily5am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -283,7 +283,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday6am"
+                        android:id="@+id/daily6am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -291,7 +291,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday7am"
+                        android:id="@+id/daily7am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -299,7 +299,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday8am"
+                        android:id="@+id/daily8am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -307,7 +307,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday9am"
+                        android:id="@+id/daily9am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -315,7 +315,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday10am"
+                        android:id="@+id/daily10am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -323,7 +323,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday11am"
+                        android:id="@+id/daily11am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -331,7 +331,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday12pm"
+                        android:id="@+id/daily12pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -339,7 +339,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday1pm"
+                        android:id="@+id/daily1pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -347,7 +347,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday2pm"
+                        android:id="@+id/daily2pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -355,7 +355,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday3pm"
+                        android:id="@+id/daily3pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -363,7 +363,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday4pm"
+                        android:id="@+id/daily4pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -371,7 +371,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday5pm"
+                        android:id="@+id/daily5pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -379,7 +379,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday6pm"
+                        android:id="@+id/daily6pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -387,7 +387,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday7pm"
+                        android:id="@+id/daily7pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -395,7 +395,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday8pm"
+                        android:id="@+id/daily8pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -403,7 +403,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday9pm"
+                        android:id="@+id/daily9pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -411,7 +411,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday10pm"
+                        android:id="@+id/daily10pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -419,7 +419,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday11pm"
+                        android:id="@+id/daily11pm"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -427,1201 +427,7 @@
                         android:text="" />
 
                     <TextView
-                        android:id="@+id/monday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tuesdayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tuesday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tuesday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/wednesdayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/wednesday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/wednesday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/thursdayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/thursday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/thursday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/fridayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/friday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/friday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/saturdayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/saturday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/saturday12am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/sundayEvents"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/sunday1am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday2am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday3am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/sunday12am"
+                        android:id="@+id/daily12am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
@@ -1633,7 +439,7 @@
     </GridLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/goalsLayout"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"

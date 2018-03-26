@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/goalsLayout"
+        android:id="@+id/changeView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -14,41 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <TextView
-            android:id="@+id/goalsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Goals:"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/dailyGoals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Enter goals here."
-            android:inputType="textMultiLine"
-            android:textAlignment="textStart"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/changeView"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/dayList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +33,7 @@
             android:text="Weekly" />
 
         <Button
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -79,10 +46,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/dailyEventCount"
+                android:id="@+id/weeklyEventCount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daily Events: XX" />
+                android:text="Weekly Events: XX" />
 
             <TextView
                 android:id="@+id/currentDate"
@@ -90,94 +57,29 @@
                 android:layout_height="wrap_content"
                 android:text="theCurrentDay" />
         </LinearLayout>
+
     </LinearLayout>
 
     <GridLayout
-        android:id="@+id/weeklyView"
+        android:id="@+id/innerScrollable"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@id/goalsLayout"
+        app:layout_constraintBottom_toTopOf="@+id/goalsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeView">
+        app:layout_constraintTop_toBottomOf="@id/dayList">
 
-        <LinearLayout
-            android:id="@+id/dateHolder"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/placeHolder"
-                android:layout_width="77dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sun"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Mon"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tue"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Wed"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Thu"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Fri"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sat"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <GridLayout
-            android:id="@+id/innerScrollable"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_column="0"
-            android:layout_row="24">
-
-            <ScrollView
+            <LinearLayout
+                android:id="@+id/weeklyEventTracker"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false">
-
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:id="@+id/timeLine"
@@ -333,7 +235,7 @@
                 <!-- CONTAINS CODE FOR THE TIMES SLOTS OF EACH DAY -->
                 <LinearLayout
                     android:id="@+id/mondayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -341,6 +243,7 @@
                         android:id="@+id/monday1am"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
+                        android:background="@drawable/text_view_border"
                         android:clickable="true"
                         android:focusable="true"
                         android:text="" />
@@ -532,7 +435,7 @@
 
                 <LinearLayout
                     android:id="@+id/tuesdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -731,7 +634,7 @@
 
                 <LinearLayout
                     android:id="@+id/wednesdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -930,7 +833,7 @@
 
                 <LinearLayout
                     android:id="@+id/thursdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1129,7 +1032,7 @@
 
                 <LinearLayout
                     android:id="@+id/fridayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1328,7 +1231,7 @@
 
                 <LinearLayout
                     android:id="@+id/saturdayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1527,7 +1430,7 @@
 
                 <LinearLayout
                     android:id="@+id/sundayEvents"
-                    android:layout_width="38dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -1723,10 +1626,112 @@
                         android:focusable="true"
                         android:text="" />
                 </LinearLayout>
-            </ScrollView>
-
-        </GridLayout>
-
+            </LinearLayout>
+        </ScrollView>
     </GridLayout>
 
+    <LinearLayout
+        android:id="@+id/goalsLayout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/innerScrollable">
+
+        <TextView
+            android:id="@+id/goalView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Goals:"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/weeklyGoals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Enter goals here."
+            android:inputType="textMultiLine"
+            android:textAlignment="textStart"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dayList"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeView">
+
+        <TextView
+            android:id="@+id/placeHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="                     " />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sun"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mon"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tue"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wed"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thu"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fri"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sat"
+            android:textSize="12sp" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
