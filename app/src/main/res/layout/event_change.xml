@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eventInfo">
 
         <Button
-            android:id="@+id/saveEvent"
+            android:id="@+id/SaveEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
