@@ -237,17 +237,17 @@
                 <!-- CONTAINS CODE FOR THE TIMES SLOTS OF EACH DAY -->
                 <LinearLayout
                     android:id="@+id/dailyEvents"
-                    android:layout_width="45dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/daily1am"
-                        android:layout_width="match_parent"
+                        android:layout_width="337dp"
                         android:layout_height="30sp"
+                        android:background="@drawable/text_view_border"
                         android:clickable="true"
                         android:focusable="true"
-                        android:background="@drawable/text_view_border"
                         android:text="" />
 
                     <TextView
