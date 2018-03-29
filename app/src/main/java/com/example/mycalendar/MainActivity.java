@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private calendarData data;
     private dailyPresenter dailyPresenter;
     private TextView currentDate;
-    private GridLayout dailyLayout;
+    private LinearLayout dailyLayout;
     private ArrayAdapter adapter;
 
     final static private String SHARED_PREF_FILE = "ander.Desktop.CS246.Repositories.calendarteam4.calendarteam4.SHARED_PREF_FILE";
@@ -29,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*** this assumes we have an id textView and gridLayout in our xml ***/
         currentDate = (TextView) findViewById(R.id.dailyGoals);
+<<<<<<< HEAD
         dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
+=======
+        dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
+>>>>>>> f53b568eada1f341168ccebd305d0528a495694f
 
         /****** Must change below to match our project *******/
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);

@@ -50,7 +50,8 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         //something like this?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //button = (Button) findViewById(R.id.)
+        //button = (Button) findViewById(R.id.);
+        //button.setOnClickListener(this);
         button2 = (Button) findViewById(R.id.SaveEvent);
         button2.setOnClickListener(this);
 
@@ -132,7 +133,7 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
                 Long eventID = Long.parseLong(uri.getLastPathSegment());
 
                 Toast.makeText(this, "Event was sucessfully added", Toast.LENGTH_SHORT).show();
-                
+
 
                 break;
             /**
