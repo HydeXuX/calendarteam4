@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         currentDate = (TextView) findViewById(R.id.dailyGoals);
-<<<<<<< HEAD
+
         dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
-=======
+
         dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
->>>>>>> f53b568eada1f341168ccebd305d0528a495694f
+
 
         /****** Must change below to match our project *******/
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
