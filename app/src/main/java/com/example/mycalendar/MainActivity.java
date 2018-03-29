@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*** this assumes we have an id textView and gridLayout in our xml ***/
         currentDate = (TextView) findViewById(R.id.dailyGoals);
-        dailyLayout = (GridLayout) findViewById(R.id.grid);
+        dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
 
         /****** Must change below to match our project *******/
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         List<String>takenData = data.getCalendarData();
         /** I want to have the editor save each string of firebaseStorage in our firebaseStorage.list **/
-        editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
+        //editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
         editor.commit();
         if(takenData.equals(null)){
             Log.w(MainActivity.log, "TakenData is null");
@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setData(String data) {
         /** loops through like saveSharedPref, will set firebaseStorage to the view **/
-        for (int i = 0; i < numberOfEvents; i++) {
-            dailyLayout.someHowAccessEachBoxAppropriately(data);
+        //for (int i = 0; i < numberOfEvents; i++) {
+        //    dailyLayout.someHowAccessEachBoxAppropriately(data);
             /** Bro MacBeth Does tv_weatherData.setText(firebaseStorage);, where tv_weatherData is TextView type **/
         }
     }
-}
+//}

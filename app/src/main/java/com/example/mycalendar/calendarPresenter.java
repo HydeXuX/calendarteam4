@@ -9,6 +9,7 @@ import com.google.firebase.database.Exclude;
 import android.*;
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.provider.CalendarContract;
 import android.provider.ContactsContract.Contacts.Data;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.EventLog;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import android.provider.CalendarContract.Events;
 import android.support.v4.content.ContextCompat;
 import android.database.Cursor;
+import android.util.Log;
 
 /**
  * Created by britthunterlefevre on 3/7/18.
@@ -34,6 +37,8 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     private userData userData;
     private calendarData calendarData;
     private calendarView calendarView;
+    private static final String DEBUG_TAG = "calendarPresenter";
+
     public Button button;
     public Button button2;
     Cursor cursor;
@@ -101,7 +106,14 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
 
                 }
                 break; */
-
+            /**
+             * create event function.
+             *
+             * creates an event taking in the Title, Description, time zone, end time and start time and
+             * adding it to the calendar data. Also gives the event and eventID
+             *
+             * @author Britthl
+             */
             case  R.id.button2:
                 if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
                     return;
@@ -117,34 +129,51 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
                 cv.put(Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
                 Uri uri = cr.insert(Events.CONTENT_URI, cv);
 
-                Toast.makeText(this, "Event was sucessfully added", Toast.LENGTH_SHORT).show();
+                Long eventID = Long.parseLong(uri.getLastPathSegment());
 
+                Toast.makeText(this, "Event was sucessfully added", Toast.LENGTH_SHORT).show();
+                
 
                 break;
+            /**
+            * delete Event
+             *
+             * deletes an event that has already been created. Linked to the button on event change UI.
+             *
+             * *@author Britthl
+            */
+            case R.id.deleteEvent:
 
+                ContentResolver cr2 = getContentResolver();
+                ContentValues cv2 = new ContentValues();
+                Uri deleteUri = null;
+
+                deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+                int rows = getContentResolver().delete(deleteUri, null, null);
+                Log.i(DEBUG_TAG, "Rows deleted: " +rows);
+
+                }
         }
+
+    /**
+     * updates events with new title or whatever the change might be.
+     *
+     * Allows user to make changes to an already existing event.
+     *
+     * @authot Britthl
+     */
+    public void updateEvents() {
+        ContentResolver cr = getContentResolver();
+        ContentValues cv = new ContentValues();
+        Uri updateUri = null;
+        cv.put(Events.TITLE, "Kickboxing");
+        updateUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+        int rows = getContentResolver().update(updateUri, cv, null, null);
+        Log.i(DEBUG_TAG, "Rows updated: " + rows);
     }
 
-/**    @Override
-    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults){
 
-        if(requestCode == REQUEST_READ_CALENDAR){
 
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                ContentResolver cr = this.getContentResolver();
-                ContentValues cv = new ContentValues();
-                cv.put(Events.TITLE, "Event from Java Code");
-                cv.put(Events.DESCRIPTION, "This Event is created from java code");
-                cv.put(Events.DTSTART, Calendar.getInstance().getTimeInMillis());
-                cv.put(Events.DTEND, Calendar.getInstance().getTimeInMillis() + 60 * 60 * 1000);
-                cv.put(Events.CALENDAR_ID, 1);
-                cv.put(Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
-                Uri uri = cr.insert(Events.CONTENT_URI, cv);
-            }
-        }
-    }
-*/
     public String getUsername() {
         return userData.getUsername();
     }
