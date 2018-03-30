@@ -32,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
         currentDate = (TextView) findViewById(R.id.dailyGoals);
 
-        dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
+        //dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
 
         dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
 
 
         /****** Must change below to match our project *******/
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
-        dailyLayout.setAdapter(adapter);
+        //dailyLayout.setAdapter(adapter);
 
         dailyPresenter = new dailyPresenter();
         dailyPresenter.register(this);
