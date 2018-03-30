@@ -27,16 +27,16 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button34"
+                android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CHANGE" />
+                android:text="SIGN IN" />
 
             <Button
-                android:id="@+id/button54"
+                android:id="@+id/sign_out_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="To" />
+                android:text="SIGN OUT..?" />
 
             <Button
                 android:id="@+id/userLogIn"
