@@ -44,14 +44,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        currentDate = (TextView) findViewById(R.id.dailyGoals);
+        currentDate = findViewById(R.id.dailyGoals);
 
-        dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
+        dailyLayout = findViewById(R.id.innerScrollable);
 
-        dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
+        dailyLayout = findViewById(R.id.dailyEvents);
 
-
-        /****** Must change below to match our project *******/
+        /****** Must change below to match our project *******
         //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
         //dailyLayout.setAdapter(adapter);
 
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //dailyPresenter.register(this);
 
         //dailyPresenter.loadSharedPref();
-        /****************************************************/
 
         mAuth = FirebaseAuth.getInstance();
         mStatusView = findViewById(R.id.status);  // where are these and
@@ -67,12 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+         ****/
     }
 
     /******************
      * Check if user is currently signed in
      *****************/
-    @Override
     public void onStart() {
         super.onStart();
         //Check if user is signed in (non-null) and update UI accordingly)
