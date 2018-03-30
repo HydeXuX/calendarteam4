@@ -1,7 +1,10 @@
 package com.example.mycalendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,10 +13,18 @@ import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.sql.Struct;
+import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String log = "MainActivity";
     private calendarData data;
@@ -21,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView currentDate;
     private LinearLayout dailyLayout;
     private ArrayAdapter adapter;
+    private FirebaseAuth mAuth;
+    private TextView mStatusView;
+    private TextView mDetailView;
 
     final static private String SHARED_PREF_FILE = "ander.Desktop.CS246.Repositories.calendarteam4.calendarteam4.SHARED_PREF_FILE";
     final static private String IS_SAVED =         "ander.Desktop.CS246.Repositories/calendarteam4.calendarteam4.IS_SAVED";
@@ -34,14 +48,108 @@ public class MainActivity extends AppCompatActivity {
         dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
 
         /****** Must change below to match our project *******/
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
-        dailyLayout.setAdapter(adapter);
+        //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
+        //dailyLayout.setAdapter(adapter);
 
-        dailyPresenter = new dailyPresenter();
-        dailyPresenter.register(this);
+        //dailyPresenter = new dailyPresenter();
+        //dailyPresenter.register(this);
 
-        dailyPresenter.loadSharedPref();
+        //dailyPresenter.loadSharedPref();
+        /****************************************************/
+
+        mAuth = FirebaseAuth.getInstance();
+        mStatusView = findViewById(R.id.status);  // where are these and
+        mDetailView = findViewById(R.id.detail);  // what do they do??
+
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
     }
+
+    /******************
+     * Check if user is currently signed in
+     *****************/
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Check if user is signed in (non-null) and update UI accordingly)
+        super.onStart();
+        updateUI(mAuth.getCurrentUser());
+    }
+
+    /*****************
+     * Sign up new users
+     * Parameters:
+     *      -email
+     *      -password
+     ****************/
+    public void createAccount(email, password){
+        mAuth.createUserWithEmailAndPassword(email, password);
+        .addOnCompleteListener(this, new onCompleteListener<AuthResult>());
+    }
+
+    /****************
+     * Check if signup is complete
+     ***************/
+    public void onComplete(@NonNull Task<AuthResult> task){
+        if (task.isSuccessful()){
+            // Sign in success, update UI with signed in user
+            FirebaseUser user = mAuth.getCurrentUser();
+            updateUI(user);
+        }
+        else{
+            // If sign in fails, display error message
+            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.");
+            Toast.LENGTH_SHORT.show();
+            updateUI(null);
+        }
+    }
+
+    private void startSignIn() {
+        Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
+                .setIsSmartLockEnabled(!BuildConfig.DEBUG)
+                .setAvailableProviders(Arrays.asList(
+                        new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()))
+                .setLogo(R.mipmap.ic_launcher)
+                .build();
+        startActivityForResult(intent, RC_SIGN_IN);
+    }
+
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            //Signed in
+            mStatusView.setText(getString(R.string.firebaseui_status_fmt, user.getEmail()));
+            mDetailView.setText(getString(R.string.id_fmt, user.getUid()));
+            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+        }
+        else {
+            //Signed out
+            mStatusView.setText(R.string.signed_out);
+            mDetailView.setText(null);
+            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+        }
+    }
+
+    private void signOut() {
+        AuthUI.getInstance().signOut(this);
+        updateUI(null);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.sign_in_button:
+                startSignIn();
+                break;
+            case R.id.sign_out_button:
+                signOut();
+                break;
+        }
+    }
+
+
+
 
     /******************
      *  When our app resumes do the following:
