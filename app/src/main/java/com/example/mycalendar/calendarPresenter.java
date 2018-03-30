@@ -4,11 +4,12 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import com.google.firebase.database.Exclude;
+//import com.google.firebase.database.Exclude;
 
 import android.*;
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.provider.CalendarContract;
 import android.provider.ContactsContract.Contacts.Data;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.EventLog;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
@@ -24,6 +26,9 @@ import android.widget.Toast;
 import android.provider.CalendarContract.Events;
 import android.support.v4.content.ContextCompat;
 import android.database.Cursor;
+import android.util.Log;
+import android.content.Intent;
+import android.provider.CalendarContract.Calendars;
 
 /**
  * Created by britthunterlefevre on 3/7/18.
@@ -34,6 +39,8 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     private userData userData;
     private calendarData calendarData;
     private calendarView calendarView;
+    private static final String DEBUG_TAG = "calendarPresenter";
+
     public Button button;
     public Button button2;
     Cursor cursor;
@@ -45,7 +52,8 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         //something like this?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //button = (Button) findViewById(R.id.)
+        //button = (Button) findViewById(R.id.);
+        //button.setOnClickListener(this);
         button2 = (Button) findViewById(R.id.SaveEvent);
         button2.setOnClickListener(this);
 
@@ -101,50 +109,117 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
 
                 }
                 break; */
-
+            /**
+             * create event function.
+             *
+             * creates an event taking in the Title, Description, time zone, end time and start time and
+             * adding it to the calendar data. Also gives the event and eventID
+             *
+             * @author Britthl
+             */
             case  R.id.button2:
-                if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-
-                ContentResolver cr = this.getContentResolver();
-                ContentValues cv = new ContentValues();
-                cv.put(Events.TITLE, "Event from Java Code");
-                cv.put(Events.DESCRIPTION, "This Event is created from java code");
-                cv.put(Events.DTSTART, Calendar.getInstance().getTimeInMillis());
-                cv.put(Events.DTEND, Calendar.getInstance().getTimeInMillis() + 60 * 60 * 1000);
-                cv.put(Events.CALENDAR_ID, 1);
-                cv.put(Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
-                Uri uri = cr.insert(Events.CONTENT_URI, cv);
-
-                Toast.makeText(this, "Event was sucessfully added", Toast.LENGTH_SHORT).show();
+                Calendar beginTime = Calendar.getInstance();
+                beginTime.set(2018, 3, 19, 7, 30);
+                Calendar endTime = Calendar.getInstance();
+                endTime.set(2018, 3, 19, 8, 30);
+                Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                        .putExtra(Events.TITLE, "Yoga")
+                        .putExtra(Events.DESCRIPTION, "Group class")
+                        .putExtra(Events.EVENT_LOCATION, "The gym")
+                        .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY)
+                        .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
+                startActivity(intent);
 
 
                 break;
 
+            /**
+            * delete Event
+             *
+             * deletes an event that has already been created. Linked to the button on event change UI.
+             *
+             * *@author Britthl
+            */
+            case R.id.deleteEvent:
+
+               // ContentResolver cr2 = getContentResolver();
+               // ContentValues cv2 = new ContentValues();
+                long eventID = 200; // I don't really know how to set the eventID so I just gave it a random value.
+                Uri deleteUri = null;
+
+                deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+                int rows = getContentResolver().delete(deleteUri, null, null);
+                Log.i(DEBUG_TAG, "Rows deleted: " +rows);
+
+                }
         }
+
+    /**
+     * updates events with new title or whatever the change might be.
+     *
+     * Allows user to make changes to an already existing event.
+     *
+     * @authot Britthl
+     */
+    public void updateEvents() {
+        long eventID = 208;
+        Uri uri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+        Intent intent = new Intent(Intent.ACTION_EDIT)
+                .setData(uri)
+                .putExtra(Events.TITLE, "My New Title");
+        startActivity(intent);
+
     }
 
-/**    @Override
-    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults){
+    /**
+     * View a specific date on the Calendar.
+     *
+     * Allows the user to look up a specific date and recieve information from events planned for that day.
+     *
+     * @author Britthl
+     */
+    public void viewCalendarDate() {
 
-        if(requestCode == REQUEST_READ_CALENDAR){
+        long startMillis = 100;
 
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                ContentResolver cr = this.getContentResolver();
-                ContentValues cv = new ContentValues();
-                cv.put(Events.TITLE, "Event from Java Code");
-                cv.put(Events.DESCRIPTION, "This Event is created from java code");
-                cv.put(Events.DTSTART, Calendar.getInstance().getTimeInMillis());
-                cv.put(Events.DTEND, Calendar.getInstance().getTimeInMillis() + 60 * 60 * 1000);
-                cv.put(Events.CALENDAR_ID, 1);
-                cv.put(Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
-                Uri uri = cr.insert(Events.CONTENT_URI, cv);
-            }
-        }
+        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+        builder.appendPath("time");
+        ContentUris.appendId(builder, startMillis);
+        Intent intent = new Intent(Intent.ACTION_VIEW)
+                .setData(builder.build());
+        startActivity(intent);
     }
-*/
+
+    /**
+     * View a specific event.
+     *
+     * Allows the user to bring up information on a certain event.
+     *
+     * @author Britthl
+     */
+
+    public void viewCalendarEvent() {
+        long eventID = 208;
+
+        Uri uri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+        Intent intent = new Intent(Intent.ACTION_VIEW)
+                .setData(uri);
+        startActivity(intent);
+
+    }
+
+
+
+    static Uri asSyncAdapter(Uri uri, String account, String accountType) {
+        return uri.buildUpon()
+                .appendQueryParameter(android.provider.CalendarContract.CALLER_IS_SYNCADAPTER,"true")
+                .appendQueryParameter(Calendars.ACCOUNT_NAME, account)
+                .appendQueryParameter(Calendars.ACCOUNT_TYPE, accountType).build();
+    }
+
     public String getUsername() {
         return userData.getUsername();
     }

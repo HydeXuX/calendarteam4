@@ -45,7 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         currentDate = (TextView) findViewById(R.id.dailyGoals);
+
+        dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
+
         dailyLayout = (LinearLayout) findViewById(R.id.dailyEvents);
+
 
         /****** Must change below to match our project *******/
         //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
@@ -189,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences.Editor editor = sharedPreferences.edit();
         List<String>takenData = data.getCalendarData();
         /** I want to have the editor save each string of firebaseStorage in our firebaseStorage.list **/
-        editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
+        //editor.putString(IS_SAVED, takenData(/*first string.. then second..*/)); /** have this as a for-loop to do that**/
         editor.commit();
         if(takenData.equals(null)){
             Log.w(MainActivity.log, "TakenData is null");
@@ -206,9 +210,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setData(String data) {
         /** loops through like saveSharedPref, will set firebaseStorage to the view **/
-        for (int i = 0; i < numberOfEvents; i++) {
-            dailyLayout.someHowAccessEachBoxAppropriately(data);
+        //for (int i = 0; i < numberOfEvents; i++) {
+        //    dailyLayout.someHowAccessEachBoxAppropriately(data);
             /** Bro MacBeth Does tv_weatherData.setText(firebaseStorage);, where tv_weatherData is TextView type **/
         }
     }
-}
+//}

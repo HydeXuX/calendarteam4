@@ -26,7 +26,7 @@ public class dailyPresenter extends Activity {
         setContentView(R.layout.activity_main);
 
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-        TextView textView = (TextView)findViewById(R.id.dateText);
+        TextView textView = (TextView)findViewById(R.id.currentDate);
         textView.setText(currentDateTimeString);
     }
 
@@ -46,9 +46,9 @@ public class dailyPresenter extends Activity {
     }
 
     // called when user taps the "weekly" button
-    fun changeToWeekly(view: View) {
+    //fun changeToWeekly(view: View) {
         //Do something in response to button
-    }
+    //}
 
     public void register(MainActivity mainActivity) {
         //REGISTER HERE
