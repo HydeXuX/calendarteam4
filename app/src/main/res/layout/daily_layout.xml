@@ -31,9 +31,6 @@
             android:text="Daily" />
 
         <Button
-<<<<<<< HEAD
-            android:id="@+id/button2"
-=======
             android:id="@+id/monthlyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +39,7 @@
 
         <Button
             android:id="@+id/addEvent"
->>>>>>> fce0ef548b2cf1d283f46db4b351131ad1c42d8a
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,16 +49,15 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-<<<<<<< HEAD
+
             android:text="+"
             android:textSize="14sp" />
-=======
+
             android:orientation="vertical">
 
         </LinearLayout>
->>>>>>> fce0ef548b2cf1d283f46db4b351131ad1c42d8a
 
-    </LinearLayout>
+
 
     <GridLayout
         android:id="@+id/innerScrollable"
