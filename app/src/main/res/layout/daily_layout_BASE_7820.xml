@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#8AA5FF">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/changeView"
@@ -15,51 +14,50 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background=""
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/innerScrollable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/dailyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Daily" />
 
         <Button
-<<<<<<< HEAD
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Weekly" />
+
+        <Button
             android:id="@+id/button2"
-=======
-            android:id="@+id/monthlyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Monthly" />
 
-        <Button
-            android:id="@+id/addEvent"
->>>>>>> fce0ef548b2cf1d283f46db4b351131ad1c42d8a
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Add Event" />
-
-        <Button
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-<<<<<<< HEAD
-            android:text="+"
-            android:textSize="14sp" />
-=======
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/dailyEventCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily Events: XX" />
+
+            <TextView
+                android:id="@+id/currentDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="theCurrentDay" />
         </LinearLayout>
->>>>>>> fce0ef548b2cf1d283f46db4b351131ad1c42d8a
 
     </LinearLayout>
 
@@ -89,7 +87,6 @@
                     android:id="@+id/timeLine"
                     android:layout_width="38dp"
                     android:layout_height="match_parent"
-                    android:background="#DEDEDE"
                     android:orientation="vertical">
 
                     <TextView
@@ -242,13 +239,13 @@
                     android:id="@+id/dailyEvents"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/daily1am"
                         android:layout_width="337dp"
                         android:layout_height="30sp"
+                        android:background="@drawable/text_view_border"
                         android:clickable="true"
                         android:focusable="true"
                         android:text="" />
@@ -449,7 +446,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:orientation="horizontal"
-        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -461,7 +457,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF"
             android:text="Goals:"
             android:textSize="16sp" />
 
@@ -470,7 +465,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF"
             android:ems="10"
             android:hint="Enter goals here."
             android:inputType="textMultiLine"

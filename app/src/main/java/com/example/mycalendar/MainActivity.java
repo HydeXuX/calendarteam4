@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         currentDate = findViewById(R.id.dailyGoals);
-
         dailyLayout = findViewById(R.id.innerScrollable);
-
         dailyLayout = findViewById(R.id.dailyEvents);
 
         /****** Must change below to match our project *******
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         //Check if user is signed in (non-null) and update UI accordingly)
         super.onStart();
-        updateUI(mAuth.getCurrentUser());
+        //updateUI(mAuth.getCurrentUser());
     }
 
     /*****************
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Parameters:
      *      -email
      *      -password
-     ****************/
+     ****************
     public void createAccount(email, password){
         mAuth.createUserWithEmailAndPassword(email, password);
         .addOnCompleteListener(this, new onCompleteListener<AuthResult>());
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /****************
      * Check if signup is complete
-     ***************/
+     ***************
     public void onComplete(@NonNull Task<AuthResult> task){
         if (task.isSuccessful()){
             // Sign in success, update UI with signed in user
@@ -143,21 +141,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AuthUI.getInstance().signOut(this);
         updateUI(null);
     }
-
+*****************/
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sign_in_button:
                 startSignIn();
                 break;
-            case R.id.sign_out_button:
-                signOut();
+            case R.id.createAccount:
+                createAccount();
                 break;
         }
     }
 
+    /***************************
+     * Allows user to sign in to their account.
+     **************************/
+    public void startSignIn(){
 
 
+    }
+
+    /***************************
+     * Allows user to create an account.
+     **************************/
+    public void createAccount(){
+
+
+    }
 
     /******************
      *  When our app resumes do the following:

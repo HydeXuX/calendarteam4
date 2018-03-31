@@ -1,5 +1,8 @@
 package com.example.mycalendar;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class calendarLoader {
     }
 
     void sendDataToFirebase(){
-        FirebaseDatabase database = FIrebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
         myRef.setValue("Hello, World!");
     }

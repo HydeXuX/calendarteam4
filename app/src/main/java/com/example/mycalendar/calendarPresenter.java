@@ -57,7 +57,6 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         button2 = (Button) findViewById(R.id.SaveEvent);
         button2.setOnClickListener(this);
 
-
         /**switch (type) {
             case ("daily"):
                 //do something

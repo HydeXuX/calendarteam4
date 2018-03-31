@@ -1,7 +1,7 @@
 package com.example.mycalendar;
 
 public class accountManagement {
-    mAuth.createUserWithEmailAndPassword(email, password)
+    //mAuth.createUserWithEmailAndPassword(email, password)
 
 
 
