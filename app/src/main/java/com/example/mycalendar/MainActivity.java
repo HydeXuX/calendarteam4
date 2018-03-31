@@ -142,10 +142,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.sign_in_button:
                 startSignIn();
                 break;
-            case R.id.sign_out_button:
-                signOut();
+            case R.id.createAccount:
+                createAccount();
                 break;
         }
+    }
+
+    /***************************
+     * Allows user to sign in to their account.
+     **************************/
+    public void startSignIn(){
+
+
+    }
+
+    /***************************
+     * Allows user to create an account.
+     **************************/
+    public void createAccount(){
+
+
     }
 
     /******************
