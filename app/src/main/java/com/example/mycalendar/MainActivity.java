@@ -46,11 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         currentDate = findViewById(R.id.dailyGoals);
 
-<<<<<<< HEAD
-        //dailyLayout = (GridLayout) findViewById(R.id.innerScrollable);
-=======
         dailyLayout = findViewById(R.id.innerScrollable);
->>>>>>> e33c45a03cfdf79e1fc6e2a2e42f74d8c0901624
 
         dailyLayout = findViewById(R.id.dailyEvents);
 
@@ -62,10 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /****** Must change below to match our project *******/
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
         //dailyLayout.setAdapter(adapter);
-=======
+
         //dailyPresenter = new dailyPresenter();
         //dailyPresenter.register(this);
->>>>>>> e33c45a03cfdf79e1fc6e2a2e42f74d8c0901624
+
 
         //dailyPresenter.loadSharedPref();
 

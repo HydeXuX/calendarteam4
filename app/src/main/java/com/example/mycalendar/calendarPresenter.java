@@ -118,20 +118,39 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
              * @author Britthl
              */
             case  R.id.button2:
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Permission is not granted
+                    return;
+                }
+
+                long calID = 3;
+                long startMillis = 0;
+                long endMillis = 0;
+
                 Calendar beginTime = Calendar.getInstance();
-                beginTime.set(2018, 3, 19, 7, 30);
+                beginTime.set(2012, 9, 14, 7, 30);
+                startMillis = beginTime.getTimeInMillis();
                 Calendar endTime = Calendar.getInstance();
-                endTime.set(2018, 3, 19, 8, 30);
-                Intent intent = new Intent(Intent.ACTION_INSERT)
-                        .setData(Events.CONTENT_URI)
-                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
-                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-                        .putExtra(Events.TITLE, "Yoga")
-                        .putExtra(Events.DESCRIPTION, "Group class")
-                        .putExtra(Events.EVENT_LOCATION, "The gym")
-                        .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY)
-                        .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
-                startActivity(intent);
+                endTime.set(2012, 9, 14, 8, 45);
+                endMillis = endTime.getTimeInMillis();
+
+                ContentResolver cr = getContentResolver();
+                ContentValues values = new ContentValues();
+                values.put(Events.DTSTART, startMillis);
+                values.put(Events.DTEND, endMillis);
+                values.put(Events.TITLE, "Jazzercise");
+                values.put(Events.DESCRIPTION, "Group workout");
+                values.put(Events.CALENDAR_ID, calID);
+                values.put(Events.EVENT_TIMEZONE, "America/Los_Angeles");
+                Uri uri = cr.insert(Events.CONTENT_URI, values);
+
+// get the event ID that is the last element in the Uri
+                long eventID = Long.parseLong(uri.getLastPathSegment());
+//
+// ... do something with event ID
+//
+//
 
 
                 break;
@@ -147,10 +166,10 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
 
                // ContentResolver cr2 = getContentResolver();
                // ContentValues cv2 = new ContentValues();
-                long eventID = 200; // I don't really know how to set the eventID so I just gave it a random value.
+                // long eventID = 208; // I don't really know how to set the eventID so I just gave it a random value.
                 Uri deleteUri = null;
 
-                deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
+                //deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
                 int rows = getContentResolver().delete(deleteUri, null, null);
                 Log.i(DEBUG_TAG, "Rows deleted: " +rows);
 
