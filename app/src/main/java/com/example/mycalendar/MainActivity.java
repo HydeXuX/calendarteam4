@@ -64,12 +64,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //dailyPresenter.loadSharedPref();
 
         mAuth = FirebaseAuth.getInstance();
-        mStatusView = findViewById(R.id.status);  // where are these and
-        mDetailView = findViewById(R.id.detail);  // what do they do??
+        //mStatusView = findViewById(R.id.status);  // where are these and
+        //mDetailView = findViewById(R.id.detail);  // what do they do??
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
-         ****/
+         //****/
     }
 
     /******************
