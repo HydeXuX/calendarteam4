@@ -9,7 +9,7 @@ import java.util.Vector;
  * Created by britthunterlefevre on 3/7/18.
  */
 
-public class calendarData {
+public class CalendarData {
     private calendarPresenter CalendarPresenter;
     private long TS;  //what is TS?
     private List<String> calendarData;
