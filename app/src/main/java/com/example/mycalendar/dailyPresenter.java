@@ -33,7 +33,7 @@ public class dailyPresenter extends Activity {
     public void saveSharedPref(){
         SharedPreferences sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
+        //editor.putInt(SHARED_PREF_FILE, R.id.userLogIn);
         editor.commit();
     }
 

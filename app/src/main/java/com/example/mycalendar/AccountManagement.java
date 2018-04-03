@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class AccountManagement extends AppCompatActivity implements View.OnClickListener{
@@ -28,11 +29,12 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
 
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
-        editTextPassword = findViewById(R.id.passwordVerify);
+        editTextPassword2 = findViewById(R.id.passwordVerify);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         findViewById(R.id.createAccount).setOnClickListener(this);
+        findViewById(R.id.logIn).setOnClickListener(this);
     }
 
     private void registerUser(){
@@ -88,22 +90,22 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AccountManagement.this, dailyPresenter.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Error occurred. User not registered", Toast.LENGTH_SHORT).show();
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                        Toast.makeText(getApplicationContext(), "The account is already registered", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Error occurred. User not registered", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
-
-
-
-
-
-
-
-
-
     }
+
     public void onClick(View view){
         switch (view.getId()){
             case R.id.logIn:
@@ -114,7 +116,6 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
                 break;
         }
     }
-
 
     public void updateUI(FirebaseUser user){
 
