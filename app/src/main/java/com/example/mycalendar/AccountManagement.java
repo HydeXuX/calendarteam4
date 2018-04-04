@@ -76,25 +76,26 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
         }
 
         // does this work (!=) or the (.equals)?
-        if (password != password2){
+        if (!password.equals(password2)){
             editTextPassword.setError("Passwords do not match");
             editTextPassword.requestFocus();
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
-
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+
                 if (task.isSuccessful()) {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountManagement.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
+                    progressBar.setVisibility(View.GONE);
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "The account is already registered", Toast.LENGTH_SHORT).show();
                     }
