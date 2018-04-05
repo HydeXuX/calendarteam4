@@ -20,6 +20,8 @@ import android.database.Cursor;
 import android.util.Log;
 import android.content.Intent;
 import android.provider.CalendarContract.Calendars;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by britthunterlefevre on 3/7/18.
@@ -32,8 +34,8 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     private calendarView calendarView;
     private static final String DEBUG_TAG = "calendarPresenter";
 
+    EditText editTextStart, editTextEnd, editTextTitle, editTextDescription;
     public Button button;
-    public Button button2;
     Cursor cursor;
 
 
@@ -42,22 +44,14 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         //is this necessary? or do we use 3 "separate" onCreates to show the different views?
         //something like this?
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //button = (Button) findViewById(R.id.);
-        //button.setOnClickListener(this);
-        button2 = (Button) findViewById(R.id.SaveEvent);
-        button2.setOnClickListener(this);
+        setContentView(R.layout.event_change);
+        button = (Button) findViewById(R.id.SaveEvent);
+        button.setOnClickListener(this);
+        editTextStart = (EditText) findViewById(R.id.eventStartTime);
+        editTextEnd = (EditText) findViewById(R.id.eventEndTime);
+        editTextTitle = (EditText) findViewById(R.id.eventName);
+        editTextDescription = (EditText) findViewById(R.id.eventNotes);
 
-        /**switch (type) {
-            case ("daily"):
-                //do something
-                break;
-            case ("weekly"):
-                //do something
-                break;
-            case ("monthly"):
-                //do something
-                break; */
         }
 
 
@@ -73,32 +67,6 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
-            /**case R.id.button:
-
-                //check for permission to read calendar
-                if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                cursor = getContentResolver().query(Events.CONTENT_URI, null, null, null, null);
-                while (cursor.moveToNext()) {
-                    if (cursor != null) {
-                        int id_1 = cursor.getColumnIndex(Events._ID);
-                        int id_2 = cursor.getColumnIndex(Events.TITLE);
-                        int id_3 = cursor.getColumnIndex(Events.DESCRIPTION);
-
-                        String idValue = cursor.getString(id_1);
-                        String titleValue = cursor.getString(id_2);
-                        String descriptionValue = cursor.getString(id_3);
-
-                        Toast.makeText(this, idValue + " , " + titleValue + " , " + descriptionValue, Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        Toast.makeText(this, "Event is not present.", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-                break; */
             /**
              * create event function.
              *
@@ -107,33 +75,28 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
              *
              * @author Britthl
              */
-            case  R.id.button2:
+            case  R.id.button:
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR)
                         != PackageManager.PERMISSION_GRANTED) {
                     // Permission is not granted
                     return;
                 }
 
-                long calID = 3;
-                long startMillis = 0;
-                long endMillis = 0;
-
-                Calendar beginTime = Calendar.getInstance();
-                beginTime.set(2012, 9, 14, 7, 30);
-                startMillis = beginTime.getTimeInMillis();
-                Calendar endTime = Calendar.getInstance();
-                endTime.set(2012, 9, 14, 8, 45);
-                endMillis = endTime.getTimeInMillis();
+                String stime = editTextStart.getText().toString().trim();
+                String etime = editTextStart.getText().toString().trim();
+                String title = editTextStart.getText().toString().trim();
+                String info = editTextStart.getText().toString().trim();
+                int calID = 3;
 
                 ContentResolver cr = getContentResolver();
                 ContentValues values = new ContentValues();
-                values.put(Events.DTSTART, startMillis);
-                values.put(Events.DTEND, endMillis);
-                values.put(Events.TITLE, "Jazzercise");
-                values.put(Events.DESCRIPTION, "Group workout");
+                values.put(Events.DTSTART, stime);
+                values.put(Events.DTEND, etime);
+                values.put(Events.TITLE, title);
+                values.put(Events.DESCRIPTION, info);
                 values.put(Events.CALENDAR_ID, calID);
-                values.put(Events.EVENT_TIMEZONE, "America/Los_Angeles");
                 Uri uri = cr.insert(Events.CONTENT_URI, values);
+                //Send the Uri to firebase!!
 
 // get the event ID that is the last element in the Uri
                 long eventID = Long.parseLong(uri.getLastPathSegment());
