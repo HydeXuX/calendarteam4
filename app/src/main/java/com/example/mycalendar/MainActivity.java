@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /** loops through like saveSharedPref, will set firebaseStorage to the view **/
         //for (int i = 0; i < numberOfEvents; i++) {
         //    dailyLayout.someHowAccessEachBoxAppropriately(data);
-            /** Bro MacBeth Does tv_weatherData.setText(firebaseStorage);, where tv_weatherData is TextView type **/
-        }
+        /** Bro MacBeth Does tv_weatherData.setText(firebaseStorage);, where tv_weatherData is TextView type **/
     }
-//}
+}
