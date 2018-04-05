@@ -37,6 +37,12 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
         findViewById(R.id.logIn).setOnClickListener(this);
     }
 
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -82,13 +88,14 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.VISIBLE);
-
                 if (task.isSuccessful()) {
                     progressBar.setVisibility(View.GONE);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI(user);
                     Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountManagement.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -96,6 +103,8 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
                 }
                 else{
                     progressBar.setVisibility(View.GONE);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI(null);
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "The account is already registered", Toast.LENGTH_SHORT).show();
                     }
@@ -107,6 +116,11 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
         });
     }
 
+    // Nothing has to necessarily go in here. Might be helpful for testing, however
+    // "https://github.com/firebase/quickstart-android/blob/de3ae39c1c2eff3bc66c55b70eef7cbda50fb047/auth/app/src/main/java/com/google/firebase/quickstart/auth/EmailPasswordActivity.java#L71-L77"
+    private void updateUI(FirebaseUser user) {
+    }
+
     public void onClick(View view){
         switch (view.getId()){
             case R.id.logIn:
@@ -116,9 +130,5 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
                 registerUser();
                 break;
         }
-    }
-
-    public void updateUI(FirebaseUser user){
-
     }
 }

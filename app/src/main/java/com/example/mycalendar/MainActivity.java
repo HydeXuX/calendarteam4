@@ -20,12 +20,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String log = "MainActivity";
@@ -60,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     private void userLogin(){
@@ -95,20 +90,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         progressBar.setVisibility(View.VISIBLE);
 
+        // "https://firebase.google.com/docs/auth/android/start/" is slightly different than this
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI(user);
                     Intent intent = new Intent(MainActivity.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
+                    updateUI(null);
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    // Does nothing
+    private void updateUI(FirebaseUser user) {
     }
 
     @Override

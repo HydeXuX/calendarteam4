@@ -29,7 +29,6 @@ import android.provider.CalendarContract.Calendars;
 public class calendarPresenter extends AppCompatActivity implements View.OnClickListener {
     private userData userData;
     private CalendarData calendarData;
-    private calendarView calendarView;
     private static final String DEBUG_TAG = "calendarPresenter";
 
     public Button button;
