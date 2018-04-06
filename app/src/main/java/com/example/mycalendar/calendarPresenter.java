@@ -7,25 +7,33 @@ import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.content.pm.PackageManager;
 import android.provider.CalendarContract.Events;
 import android.support.v4.content.ContextCompat;
-import android.database.Cursor;
 import android.util.Log;
 import android.content.Intent;
 import android.provider.CalendarContract.Calendars;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * Created by britthunterlefevre on 3/7/18.
- */
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 // CONTAINS ALL LOGIC
 public class calendarPresenter extends AppCompatActivity implements View.OnClickListener {
@@ -33,15 +41,12 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     private CalendarData calendarData;
     private static final String DEBUG_TAG = "calendarPresenter";
 
-    EditText editTextStart, editTextEnd, editTextTitle, editTextDescription;
+    View view;
+    EditText editTextStart, editTextEnd, editTextDate, editTextTitle, editTextDescription;
     public Button button;
-    Cursor cursor;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //is this necessary? or do we use 3 "separate" onCreates to show the different views?
-        //something like this?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_change);
         button = (Button) findViewById(R.id.SaveEvent);
@@ -50,10 +55,7 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         editTextEnd = (EditText) findViewById(R.id.eventEndTime);
         editTextTitle = (EditText) findViewById(R.id.eventName);
         editTextDescription = (EditText) findViewById(R.id.eventNotes);
-
-        }
-
-
+        };
 
     /**
      * Method for saving events on the click of a button
@@ -66,56 +68,10 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            /**
-             * create event function.
-             *
-             * creates an event taking in the Title, Description, time zone, end time and start time and
-             * adding it to the calendar data. Also gives the event and eventID
-             *
-             * @author Britthl
-             */
-            case  R.id.button:
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    // Permission is not granted
-                    return;
-                }
-
-                String stime = editTextStart.getText().toString().trim();
-                String etime = editTextStart.getText().toString().trim();
-                String title = editTextStart.getText().toString().trim();
-                String info = editTextStart.getText().toString().trim();
-                int calID = 3;
-
-                ContentResolver cr = getContentResolver();
-                ContentValues values = new ContentValues();
-                values.put(Events.DTSTART, stime);
-                values.put(Events.DTEND, etime);
-                values.put(Events.TITLE, title);
-                values.put(Events.DESCRIPTION, info);
-                values.put(Events.CALENDAR_ID, calID);
-                Uri uri = cr.insert(Events.CONTENT_URI, values);
-                //Send the Uri to firebase!!
-
-// get the event ID that is the last element in the Uri
-                long eventID = Long.parseLong(uri.getLastPathSegment());
-//
-// ... do something with event ID
-//
-//
-
-
+            case  R.id.SaveEvent:
+                send(view);
                 break;
-
-            /**
-            * delete Event
-             *
-             * deletes an event that has already been created. Linked to the button on event change UI.
-             *
-             * *@author Britthl
-            */
             case R.id.deleteEvent:
-
                // ContentResolver cr2 = getContentResolver();
                // ContentValues cv2 = new ContentValues();
                 // long eventID = 208; // I don't really know how to set the eventID so I just gave it a random value.
@@ -124,7 +80,6 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
                 //deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
                 int rows = getContentResolver().delete(deleteUri, null, null);
                 Log.i(DEBUG_TAG, "Rows deleted: " +rows);
-
                 }
         }
 
@@ -142,7 +97,6 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
                 .setData(uri)
                 .putExtra(Events.TITLE, "My New Title");
         startActivity(intent);
-
     }
 
     /**
@@ -179,10 +133,7 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
         Intent intent = new Intent(Intent.ACTION_VIEW)
                 .setData(uri);
         startActivity(intent);
-
     }
-
-
 
     static Uri asSyncAdapter(Uri uri, String account, String accountType) {
         return uri.buildUpon()
@@ -190,6 +141,47 @@ public class calendarPresenter extends AppCompatActivity implements View.OnClick
                 .appendQueryParameter(Calendars.ACCOUNT_NAME, account)
                 .appendQueryParameter(Calendars.ACCOUNT_TYPE, accountType).build();
     }
+
+    public void toastDisplay(CharSequence text){
+        //Displaying toast message saying successful sent
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+        TextView te = view.findViewById(android.R.id.message);
+        te.setTextColor(Color.WHITE);
+        toast.setGravity(Gravity.TOP| Gravity.CENTER, 0, 150);
+        toast.show();
+
+    }
+
+    public void send(View view){
+        editTextTitle = findViewById(R.id.eventName);
+        editTextStart = findViewById(R.id.eventStartTime);
+        editTextEnd = findViewById(R.id.eventEndTime);
+        editTextDescription = findViewById(R.id.eventNotes);
+        editTextDate = findViewById(R.id.eventDate);
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("EventName",editTextTitle.getText().toString());
+            json.put("StartTime",editTextStart.getText().toString());
+            json.put("StartEnd",editTextEnd.getText().toString());
+            json.put("Date",editTextDate.getText().toString());
+            json.put("Notes",editTextDescription.getText().toString());
+            //toastDisplay("Information gathered");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref =database.getReference("Json");
+        ref.setValue(json.toString());
+        toastDisplay("Event sent");
+        //Send the Uri to firebase!!
+    }
+
+
 
     public String getUsername() {
         return userData.getUsername();

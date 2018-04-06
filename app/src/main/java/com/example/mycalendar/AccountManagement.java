@@ -1,11 +1,14 @@
 package com.example.mycalendar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -18,19 +21,21 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class AccountManagement extends AppCompatActivity implements View.OnClickListener{
-    EditText editTextEmail, editTextPassword, editTextPassword2;
+    private EditText editTextEmail, editTextPassword, editTextPassword2;
     private FirebaseAuth mAuth;
-    ProgressBar progressBar;
+    private Button createAccount;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_new_account);
 
+        progressDialog = new ProgressDialog(this);
+        createAccount = (Button)findViewById(R.id.createAccount);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         editTextPassword2 = findViewById(R.id.passwordVerify);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         findViewById(R.id.createAccount).setOnClickListener(this);
@@ -39,11 +44,11 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
 
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
 
     private void registerUser(){
+        progressDialog.setMessage("Validating Information");
+        progressDialog.show();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String password2 = editTextPassword2.getText().toString().trim();
@@ -51,19 +56,19 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
         /**********
          * Ensures valid data
          */
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
+        if (TextUtils.isEmpty(email)) {
+            editTextEmail.setError("Email required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if (password.isEmpty()) {
-            editTextPassword.setError("Password is required");
+        if (TextUtils.isEmpty(password)) {
+            editTextPassword.setError("Password required");
             editTextPassword.requestFocus();
             return;
         }
 
-        if (password2.isEmpty()) {
+        if (TextUtils.isEmpty(password2)) {
             editTextPassword2.setError("Password required");
             editTextPassword2.requestFocus();
             return;
@@ -88,23 +93,20 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
             return;
         }
 
+        progressDialog.setMessage("Registering User...");
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.VISIBLE);
                 if (task.isSuccessful()) {
-                    progressBar.setVisibility(View.GONE);
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(user);
+                    progressDialog.hide();
                     Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AccountManagement.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
-                    progressBar.setVisibility(View.GONE);
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(null);
+                    progressDialog.hide();
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "The account is already registered", Toast.LENGTH_SHORT).show();
                     }

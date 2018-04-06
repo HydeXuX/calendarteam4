@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayAdapter adapter;
     private FirebaseAuth mAuth;
     DatabaseReference databaseEvents;
+    Button signIn;
     ProgressBar progressBar;
     EditText editTextEmail, editTextPassword;
 
@@ -49,14 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        signIn = (Button) findViewById(R.id.sign_in_button);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.createAccount).setOnClickListener(this);
     }
 
-    public void onStart() {
+/*    public void onStart() {
         super.onStart();
-    }
+    }   */
 
     private void userLogin(){
         String email = editTextEmail.getText().toString().trim();
@@ -82,12 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editTextEmail.requestFocus();
             return;
         }
-
-        if (password.length() < 6) {
-            editTextPassword.setError("Minimum length must be 6");
-            editTextPassword.requestFocus();
-            return;
-        }
         progressBar.setVisibility(View.VISIBLE);
 
         // "https://firebase.google.com/docs/auth/android/start/" is slightly different than this
@@ -96,15 +93,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(user);
                     Intent intent = new Intent(MainActivity.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
                     updateUI(null);
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error occurred", Toast.LENGTH_SHORT).show();
                 }
             }
         });

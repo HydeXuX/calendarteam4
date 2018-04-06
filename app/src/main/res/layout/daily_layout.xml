@@ -232,192 +232,216 @@
                     android:background="#FFFFFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <Button
+                        android:id="@+id/daily5am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily6am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily7am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily8am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily9am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily10am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily11am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily12pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily1pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily2pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily3pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily4pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily5pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily6pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily7pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily8pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily9pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily10pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily11pm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/daily12am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="" />
+
+                    <Button
                         android:id="@+id/daily1am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="337dp"
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
                         android:text="" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/daily2am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
                         android:text="" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/daily3am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
                         android:text="" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/daily4am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily5am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily6am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily7am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily8am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily9am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily10am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily11am"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily12pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily1pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily2pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily3pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily4pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily5pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily6pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily7pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily8pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily9pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily10pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily11pm"
-                        android:layout_width="match_parent"
-                        android:layout_height="30sp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/daily12am"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"

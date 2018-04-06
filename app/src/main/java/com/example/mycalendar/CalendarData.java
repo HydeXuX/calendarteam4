@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
-/**
- * Created by britthunterlefevre on 3/7/18.
- */
-
 public class CalendarData {
     private calendarPresenter CalendarPresenter;
     private DatabaseReference databaseReference;
@@ -24,9 +20,7 @@ public class CalendarData {
     String dailyGoals;
     List<CalendarData> list;    //Is this what we need? I'm confused because we'll be getting a bunch of eventNames, startTimes etc back
                                 //so how can we store all of the data, should each of them be made "List<String> eventName"?
-
     //firebasehelper class @weatherstation
-
     public CalendarData(){
     }
 
@@ -37,6 +31,14 @@ public class CalendarData {
         this.date = date;
         this.notes = notes;
         this.dailyGoals = dailyGoals;
+    }
+
+    public List getList(){
+        return list;
+    }
+
+    public void setList(List newList){
+        list = newList;
     }
 
     public String getEventName(){
