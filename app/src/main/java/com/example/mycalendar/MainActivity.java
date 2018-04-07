@@ -57,13 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.createAccount).setOnClickListener(this);
     }
 
-/*    public void onStart() {
+    public void onStart() {
         super.onStart();
-    }   */
+    }
 
     private void userLogin(){
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        editTextEmail = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
 
         /**********
          * Ensures valid data
@@ -88,17 +90,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBar.setVisibility(View.VISIBLE);
 
         // "https://firebase.google.com/docs/auth/android/start/" is slightly different than this
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
+                    progressBar.setVisibility(View.GONE);
+                    Log.d("TAG", "signInWithEmail:onComplete" + task.isSuccessful());
                     Intent intent = new Intent(MainActivity.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
-                    updateUI(null);
+                    Log.w("TAG", "signInWithEmail", task.getException());
                     Toast.makeText(getApplicationContext(), "Error occurred", Toast.LENGTH_SHORT).show();
                 }
             }

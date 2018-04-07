@@ -48,9 +48,10 @@ public class dailyPresenter extends Activity {
             }
 
         });
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        // we aren't showing the current date anymore. This was giving errors since it was null
+        /*String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         TextView textView = findViewById(R.id.currentDate);
-        textView.setText(currentDateTimeString);
+        textView.setText(currentDateTimeString);*/
 
         // Get UI elements
         FIVEam    = findViewById(R.id.daily5am);
