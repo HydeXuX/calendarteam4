@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -112,10 +113,12 @@ public class AccountManagement extends AppCompatActivity implements View.OnClick
                     }
                     else{
                         Toast.makeText(getApplicationContext(), "Error occurred. User not registered", Toast.LENGTH_SHORT).show();
+                        Log.i("Test", task.getException().getMessage());
                     }
                 }
             }
         });
+        progressDialog.hide();
     }
 
     // Nothing has to necessarily go in here. Might be helpful for testing, however

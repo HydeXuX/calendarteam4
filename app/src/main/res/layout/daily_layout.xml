@@ -43,12 +43,12 @@
             android:text="Add Event" />
 
         <Button
-            android:layout_width="1dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:text="+"
-            android:textSize="14sp"
-            android:orientation="vertical"/>
+            android:textSize="14sp" />
     </LinearLayout>
     <GridLayout
         android:id="@+id/innerScrollable"

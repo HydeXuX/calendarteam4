@@ -1,243 +1,95 @@
 package com.example.mycalendar;
 
-import java.util.Calendar;
-//import com.google.firebase.database.Exclude;
-
-import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.ContentValues;
+import java.util.ArrayList;
+import java.util.List;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.content.pm.PackageManager;
-import android.provider.CalendarContract.Events;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.content.Intent;
-import android.provider.CalendarContract.Calendars;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+
+/**
+ * Created by britthunterlefevre on 3/7/18.
+ */
 
 // CONTAINS ALL LOGIC
-public class calendarPresenter extends AppCompatActivity implements View.OnClickListener {
-    private userData userData;
-    private CalendarData calendarData;
-    private static final String DEBUG_TAG = "calendarPresenter";
-
-    View view;
-    EditText editTextStart, editTextEnd, editTextDate, editTextTitle, editTextDescription;
-    public Button button;
+public class calendarPresenter extends AppCompatActivity {
+    EditText editTextStart, editTextEnd, editTextTitle, editTextDescription, editTextDate;
+    DatabaseReference ref;
+    List<CalendarData> eventList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        eventList = new ArrayList<>();
         setContentView(R.layout.event_change);
-        button = (Button) findViewById(R.id.SaveEvent);
-        button.setOnClickListener(this);
         editTextStart = (EditText) findViewById(R.id.eventStartTime);
         editTextEnd = (EditText) findViewById(R.id.eventEndTime);
         editTextTitle = (EditText) findViewById(R.id.eventName);
         editTextDescription = (EditText) findViewById(R.id.eventNotes);
-        };
+        ref = FirebaseDatabase.getInstance().getReference("Calendar Data");
+    }
 
-    /**
-     * Method for saving events on the click of a button
-     * <p>
-     * Method will take in the Title, Description, Start time, end time, and the time zone and save them to a specific
-     * time slot.
-     *
-     * @author Britthl
-     */
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case  R.id.SaveEvent:
-                send(view);
-                break;
-            case R.id.deleteEvent:
-               // ContentResolver cr2 = getContentResolver();
-               // ContentValues cv2 = new ContentValues();
-                // long eventID = 208; // I don't really know how to set the eventID so I just gave it a random value.
-                Uri deleteUri = null;
+    public void onStart() {
+        super.onStart();
 
-                //deleteUri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
-                int rows = getContentResolver().delete(deleteUri, null, null);
-                Log.i(DEBUG_TAG, "Rows deleted: " +rows);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventList.clear();
+                for (DataSnapshot eventSnap : dataSnapshot.getChildren()) {
+                    CalendarData tempData = eventSnap.getValue(CalendarData.class);
+                    eventList.add(tempData);
+                    //editTextDescription.setText(eventList.get(0).toString()+ eventList.size());
                 }
-        }
+            }
 
-    /**
-     * updates events with new title or whatever the change might be.
-     *
-     * Allows user to make changes to an already existing event.
-     *
-     * @authot Britthl
-     */
-    public void updateEvents() {
-        long eventID = 208;
-        Uri uri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
-        Intent intent = new Intent(Intent.ACTION_EDIT)
-                .setData(uri)
-                .putExtra(Events.TITLE, "My New Title");
-        startActivity(intent);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
-    /**
-     * View a specific date on the Calendar.
-     *
-     * Allows the user to look up a specific date and recieve information from events planned for that day.
-     *
-     * @author Britthl
-     */
-    public void viewCalendarDate() {
-
-        long startMillis = 100;
-
-        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-        builder.appendPath("time");
-        ContentUris.appendId(builder, startMillis);
-        Intent intent = new Intent(Intent.ACTION_VIEW)
-                .setData(builder.build());
-        startActivity(intent);
-    }
-
-    /**
-     * View a specific event.
-     *
-     * Allows the user to bring up information on a certain event.
-     *
-     * @author Britthl
-     */
-
-    public void viewCalendarEvent() {
-        long eventID = 208;
-
-        Uri uri = ContentUris.withAppendedId(Events.CONTENT_URI, eventID);
-        Intent intent = new Intent(Intent.ACTION_VIEW)
-                .setData(uri);
-        startActivity(intent);
-    }
-
-    static Uri asSyncAdapter(Uri uri, String account, String accountType) {
-        return uri.buildUpon()
-                .appendQueryParameter(android.provider.CalendarContract.CALLER_IS_SYNCADAPTER,"true")
-                .appendQueryParameter(Calendars.ACCOUNT_NAME, account)
-                .appendQueryParameter(Calendars.ACCOUNT_TYPE, accountType).build();
-    }
-
-    public void toastDisplay(CharSequence text){
+    public void toastDisplay(CharSequence text) {
         //Displaying toast message saying successful sent
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
-        View view = toast.getView();
-        view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-        TextView te = view.findViewById(android.R.id.message);
+        View viw = toast.getView();
+        viw.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+        TextView te = viw.findViewById(android.R.id.message);
         te.setTextColor(Color.WHITE);
-        toast.setGravity(Gravity.TOP| Gravity.CENTER, 0, 150);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 150);
         toast.show();
 
     }
 
-    public void send(View view){
+    public void send(View view) {
         editTextTitle = findViewById(R.id.eventName);
         editTextStart = findViewById(R.id.eventStartTime);
         editTextEnd = findViewById(R.id.eventEndTime);
         editTextDescription = findViewById(R.id.eventNotes);
         editTextDate = findViewById(R.id.eventDate);
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("EventName",editTextTitle.getText().toString());
-            json.put("StartTime",editTextStart.getText().toString());
-            json.put("StartEnd",editTextEnd.getText().toString());
-            json.put("Date",editTextDate.getText().toString());
-            json.put("Notes",editTextDescription.getText().toString());
-            //toastDisplay("Information gathered");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref =database.getReference("Json");
-        ref.setValue(json.toString());
+        String eventName = editTextTitle.getText().toString();
+        String startTime = editTextStart.getText().toString();
+        String endTme = editTextEnd.getText().toString();
+        String date = editTextDate.getText().toString();
+        String notes = editTextDescription.getText().toString();
+        String id = ref.push().getKey();
+        CalendarData event = new CalendarData(eventName, startTime, endTme, date, notes);
+        ref.child(id).setValue(event);
         toastDisplay("Event sent");
-        //Send the Uri to firebase!!
-    }
-
-
-
-    public String getUsername() {
-        return userData.getUsername();
-    }
-
-    public void setUsername(String username) {
-        userData.setUsername(username);
-    }
-
-    public String getPassword() {
-        return userData.getPassword();
-    }
-
-    public void setPassword(String password) {
-        userData.setPassword(password);
-    }
-
-
-    public void displayCalendar(){
-        // how would this work? do we call onCreate instead of this function? or have onCreate load the data after
-        // we switch the view with this function?
-    }
-
-    public void addEvent() {
-
-    }
-
-    // WE NEED SAVE EVENT (AND FOR OUR OTHER VARIABLES)
-    // TO ACTUALLY HAVE A FUNCTION WHICH SAVES THEM
-    public void saveEvent() {
-    }
-
-    public void deleteEvent(){
-    }
-
-    public void changeGoals(){
-    }
-
-    public void saveGoals(){
-    }
-
-    public void changeDay(){
-    }
-
-    public void changeNotes(){
-    }
-
-    public void saveNotes(){
     }
 }
-
-/**
- if (shouldShowRequestPermissionRationale(android.Manifest.permission.READ_CALENDAR)) {
- Toast.makeText(This, "Calendar permission is needed to save event", Toast.LENGTH_SHORT).show();
- }
-
- ActivityCompat.requestPermissions(new String[]{Manifest.permission.READ_CALENDAR}, REQUEST_READ_CALENDAR);
- }
- */

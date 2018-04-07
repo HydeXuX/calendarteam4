@@ -17,26 +17,23 @@ public class CalendarData {
     String endTime;
     String date;
     String notes;
-    String dailyGoals;
     List<CalendarData> list;    //Is this what we need? I'm confused because we'll be getting a bunch of eventNames, startTimes etc back
                                 //so how can we store all of the data, should each of them be made "List<String> eventName"?
     //firebasehelper class @weatherstation
     public CalendarData(){
     }
 
-    public CalendarData(String eventName, String startTime, String endTime, String date, String notes, String dailyGoals){
+    public CalendarData(String eventName, String startTime, String endTime, String date, String notes){
         this.eventName = eventName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.notes = notes;
-        this.dailyGoals = dailyGoals;
     }
 
     public List getList(){
         return list;
     }
-
     public void setList(List newList){
         list = newList;
     }
@@ -44,24 +41,19 @@ public class CalendarData {
     public String getEventName(){
         return eventName;
     }
+    public void setEventName(String newEvent) { eventName = newEvent; }
 
     public String getStartTime(){
         return startTime;
     }
+    public void setStartTime(String newStartTime) { startTime = newStartTime;}
 
-    public String getEndTime(){
-        return endTime;
-    }
+    public String getEndTime(){return endTime;}
+    public void setEndTime(String newEndTime){ endTime = newEndTime;}
 
-    public String getDate(){
-        return date;
-    }
+    public String getDate(){return date;}
+    public void setDate(String newDate){date = newDate;}
 
-    public String getNotes(){
-        return notes;
-    }
-
-    public String getDailyGoals(){
-        return dailyGoals;
-    }
+    public String getNotes(){return notes;}
+    public void setNotes(String newNotes){notes = newNotes;}
 }

@@ -18,11 +18,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import org.w3c.dom.Text;
 
 public class dailyPresenter extends Activity {
     private userData user;
+    private calendarPresenter calendarPresenter;
     DatabaseReference databaseReference;
     Button FIVEam, SIXam, SEVENam, EIGHTam, NINEam, TENam, ELEVENam, TWELVEam, ONEpm, TWOpm, THREEpm,
             FOURpm, FIVEpm, SIXpm, SEVENpm, EIGHTpm, NINEpm, TENpm, ELEVENpm, TWELVEpm, ONEam, TWOam,
@@ -75,6 +77,28 @@ public class dailyPresenter extends Activity {
         TWOam     = findViewById(R.id.daily2am);
         THREEam   = findViewById(R.id.daily3am);
         FOURam    = findViewById(R.id.daily4am);
+
+        //Our data is in a list of CalendarData objects
+        // Im going to take the data from our calendarData and use it
+        //    to populate the daily view by making the buttons change
+        //    types to be visible and then to change the text as well
+        populateDaily();
+    }
+
+    public void populateDaily(){
+        /*List list = calendarPresenter.getList();
+        for(int i = 0; i < list.size(); i++){
+            String date      = list.get(i).getDate;
+
+
+            String notes     = list.get(i).getNotes;
+            String eventName = list.get(i).getEventName;
+            String startTime = list.get(i).getStartTime;
+            String endTime   = list.get(i).getEndTime;
+
+
+
+        }*/
     }
 
     public void saveSharedPref(){
