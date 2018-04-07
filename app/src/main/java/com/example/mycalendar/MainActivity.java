@@ -9,32 +9,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String log = "MainActivity";
-    private TextView currentDate;
-    private LinearLayout dailyLayout;
-    private AccountManagement accountManagement;
-    private ArrayAdapter adapter;
     private FirebaseAuth mAuth;
-    DatabaseReference databaseEvents;
-    Button signIn;
     ProgressBar progressBar;
-    EditText editTextEmail, editTextPassword;
+    private EditText editTextEmail, editTextPassword;
 
     final static private String SHARED_PREF_FILE = "ander.Desktop.CS246.Repositories.calendarteam4.calendarteam4.SHARED_PREF_FILE";
     final static private String IS_SAVED =         "ander.Desktop.CS246.Repositories/calendarteam4.calendarteam4.IS_SAVED";
@@ -44,14 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Log in information
         mAuth = FirebaseAuth.getInstance();
-        EditText editTextEmail, editTextPassword;
-
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        signIn = (Button) findViewById(R.id.sign_in_button);
+        progressBar = findViewById(R.id.progressBar);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.createAccount).setOnClickListener(this);
@@ -67,9 +51,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
-        /**********
-         * Ensures valid data
-         */
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
@@ -89,28 +70,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         progressBar.setVisibility(View.VISIBLE);
 
-        // "https://firebase.google.com/docs/auth/android/start/" is slightly different than this
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressBar.setVisibility(View.GONE);
-                    Log.d("TAG", "signInWithEmail:onComplete" + task.isSuccessful());
+                    Toast.makeText(getApplicationContext(), "Sign in success", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, dailyPresenter.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
                 else{
-                    Log.w("TAG", "signInWithEmail", task.getException());
                     Toast.makeText(getApplicationContext(), "Error occurred", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    // Does nothing
-    private void updateUI(FirebaseUser user) {
     }
 
     @Override
