@@ -22,17 +22,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/dailyView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Daily" />
-
-        <Button
             android:id="@+id/monthlyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="goToMonthly"
             android:text="Monthly" />
 
         <Button
@@ -40,15 +34,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="goToEventChange"
             android:text="Add Event" />
 
         <Button
-            android:layout_width="10dp"
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:text="+"
-            android:textSize="14sp" />
+            android:onClick="logOut"
+            android:text="Settings" />
     </LinearLayout>
     <GridLayout
         android:id="@+id/innerScrollable"
@@ -239,7 +234,9 @@
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:text="" />
+                        android:padding="0dp"
+                        android:text=""
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/daily6am"
@@ -248,10 +245,11 @@
                         android:layout_height="30sp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:text="" />
+                        android:padding="0dp" />
 
                     <Button
                         android:id="@+id/daily7am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -261,24 +259,25 @@
 
                     <Button
                         android:id="@+id/daily8am"
-                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:padding="0dp"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
+                        android:focusable="true" />
 
                     <Button
                         android:id="@+id/daily9am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:clickable="true"
-                        android:focusable="true"
-                        android:text="" />
+                        android:focusable="true" />
 
                     <Button
                         android:id="@+id/daily10am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -288,6 +287,7 @@
 
                     <Button
                         android:id="@+id/daily11am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -297,6 +297,7 @@
 
                     <Button
                         android:id="@+id/daily12pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -306,6 +307,7 @@
 
                     <Button
                         android:id="@+id/daily1pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -315,6 +317,7 @@
 
                     <Button
                         android:id="@+id/daily2pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -324,6 +327,7 @@
 
                     <Button
                         android:id="@+id/daily3pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -333,6 +337,7 @@
 
                     <Button
                         android:id="@+id/daily4pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -342,6 +347,7 @@
 
                     <Button
                         android:id="@+id/daily5pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -351,6 +357,7 @@
 
                     <Button
                         android:id="@+id/daily6pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -360,6 +367,7 @@
 
                     <Button
                         android:id="@+id/daily7pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -369,6 +377,7 @@
 
                     <Button
                         android:id="@+id/daily8pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -378,6 +387,7 @@
 
                     <Button
                         android:id="@+id/daily9pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -387,6 +397,7 @@
 
                     <Button
                         android:id="@+id/daily10pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -396,6 +407,7 @@
 
                     <Button
                         android:id="@+id/daily11pm"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -405,6 +417,7 @@
 
                     <Button
                         android:id="@+id/daily12am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -414,6 +427,7 @@
 
                     <Button
                         android:id="@+id/daily1am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="337dp"
                         android:layout_height="30sp"
@@ -423,6 +437,7 @@
 
                     <Button
                         android:id="@+id/daily2am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -432,6 +447,7 @@
 
                     <Button
                         android:id="@+id/daily3am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -441,6 +457,7 @@
 
                     <Button
                         android:id="@+id/daily4am"
+                        android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
@@ -483,6 +500,7 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:ems="10"
+            android:focusedByDefault="false"
             android:hint="Enter goals here."
             android:inputType="textMultiLine"
             android:textAlignment="textStart"

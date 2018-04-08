@@ -1,5 +1,6 @@
 package com.example.mycalendar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ public class monthlyPresenter extends AppCompatActivity{
                         //selectedDate is what we show in the toast.
                 //how to show what happened to selected date.. for this example is a toast.
                 Toast.makeText(monthlyPresenter.this, selectedDate, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(monthlyPresenter.this, dailyPresenter.class);
+                startActivity(intent);
             }
 
             @Override

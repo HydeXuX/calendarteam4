@@ -23,43 +23,39 @@
             android:id="@+id/eventName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:ems="10"
-            android:hint="@string/common_google_play_services_unsupported_text"
             android:background="@drawable/text_view_border"
+            android:ems="10"
+            android:hint="Title"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/eventDate"
+        <Button
+            android:id="@+id/datePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/text_view_border"
-            android:ems="10"
-            android:hint="Date"
-            android:inputType="date" />
+            android:onClick="showTimePickerDialog"
+            android:text="Select Date" />
 
-        <EditText
-            android:id="@+id/eventStartTime"
+        <Button
+            android:id="@+id/startTimePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/text_view_border"
-            android:ems="10"
-            android:hint="Start Time"
-            android:inputType="time" />
+            android:onClick="showTimePickerDialog"
+            android:text="Select Start Time" />
 
-        <EditText
-            android:id="@+id/eventEndTime"
+        <Button
+            android:id="@+id/endTimePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:ems="10"
-            android:hint="End Time"
-            android:inputType="time" />
+            android:onClick="showTimePickerDialog"
+            android:text="Select End Time" />
 
         <EditText
             android:id="@+id/eventNotes"
-            android:hint="Notes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:hint="Notes"
+            android:layout_gravity="center"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
@@ -83,14 +79,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="send"
             android:text="@string/Save" />
 
-        <Button
-            android:id="@+id/deleteEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/button" />
     </LinearLayout>
 
     <LinearLayout
@@ -142,7 +133,7 @@
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="261dp"
             android:gravity="center"
             android:text="Notes:"
             android:textAppearance="@style/TextAppearance.AppCompat.Button" />

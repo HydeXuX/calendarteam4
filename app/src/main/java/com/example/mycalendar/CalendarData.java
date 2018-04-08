@@ -17,25 +17,20 @@ public class CalendarData {
     String endTime;
     String date;
     String notes;
-    List<CalendarData> list;    //Is this what we need? I'm confused because we'll be getting a bunch of eventNames, startTimes etc back
-                                //so how can we store all of the data, should each of them be made "List<String> eventName"?
+    int start;
+    int end;
     //firebasehelper class @weatherstation
     public CalendarData(){
     }
 
-    public CalendarData(String eventName, String startTime, String endTime, String date, String notes){
+    public CalendarData(String eventName, String startTime, String endTime, String date, String notes, int start, int end){
         this.eventName = eventName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.notes = notes;
-    }
-
-    public List getList(){
-        return list;
-    }
-    public void setList(List newList){
-        list = newList;
+        this.start = start;
+        this.end = end;
     }
 
     public String getEventName(){
@@ -56,4 +51,10 @@ public class CalendarData {
 
     public String getNotes(){return notes;}
     public void setNotes(String newNotes){notes = newNotes;}
+
+    public void setStart(int start) {this.start = start;}
+    public int getStartInt(){return start;}
+
+    public void setEnd(int end) {this.end = end;}
+    public int getEndInt() {return end;}
 }
